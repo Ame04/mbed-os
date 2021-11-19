@@ -806,6 +806,21 @@ class NuM2354Code(object):
         )
         m2354_tfm_bin(t_self, binf, secure_bin)
 
+class STM32LZE_Q_S_Code(object):
+    """STM32LZE_Q Hooks"""
+    @staticmethod
+    def binary_hook(t_self, resources, elf, path_hex):
+        from tools.targets.STM32.STM32L5.STM32L552xE.NUCLEO_L552ZE_Q import stm32l552ze_q_tfm_hex
+        configured_secure_image_filename = t_self.target.secure_image_filename
+        secure_hex = find_secure_image(
+            t_self.notify,
+            resources,
+            path_hex,
+            configured_secure_image_filename,
+            FileType.HEX
+        )
+        stm32l552ze_q_tfm_hex(t_self, path_hex, secure_hex, 'NUCLEO_L552ZE_Q_Secure')
+
 # End Target specific section
 ###############################################################################
 def update_target_data():

@@ -4441,6 +4441,7 @@
         "inherits": [
             "MCU_STM32L552xE"
         ],
+        "public": false,
         "supported_form_factors": [
             "ARDUINO_UNO"
         ],
@@ -4448,6 +4449,35 @@
         "detect_code": [
             "0854"
         ]
+    },
+    "NUCLEO_L552ZE_Q_S": {
+        "inherits": [
+            "NUCLEO_L552ZE_Q"
+        ],
+        "features_add": [
+            "PSA"
+        ],
+        "extra_labels_add": [
+            "TFM",
+            "TFM_LATEST",
+            "TFM_V8M"
+        ],
+        "macros_add":[
+            "BL2"
+        ],
+        "tfm_target_name": "stm/nucleo_l552ze_q",
+        "tfm_bootloader_supported": true,
+        "tfm_supported_toolchains": [
+            "ARMCLANG",
+            "GNUARM"
+        ],
+        "tfm_default_toolchain":"GNUARM",
+        "tfm_delivery_dir":"TARGET_STM/TARGET_STM32L5/TARGET_STM32L552xE/TARGET_NUCLEO_L552ZE_Q/COMPONENT_TFM_S_FW",
+        "TFM_OUTPUT_EXT":"hex",
+        "post_binary_hook":{
+            "function":"STM32LZE_Q_S_Code.binary_hook"
+        },
+        "secure_image_filename":"tfm_s.hex"
     },
     "MCU_STM32L562xE": {
         "inherits": [
