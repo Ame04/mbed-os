@@ -24,8 +24,6 @@
 #ifndef PSA_CRYPTO_VALUES_H
 #define PSA_CRYPTO_VALUES_H
 
-#include "mbedtls_svc_key_id.h"
-
 /** \defgroup error Error codes
  * @{
  */
@@ -1219,29 +1217,6 @@
  * same base class and having a tag length greater than or equal to the one
  * encoded in #PSA_ALG_AEAD_TAG_LENGTH_MASK. */
 #define PSA_ALG_AEAD_AT_LEAST_THIS_LENGTH_FLAG  ((psa_algorithm_t)0x00008000)
-
-/** Macro to build a shortened AEAD algorithm.
- *
- * A shortened AEAD algorithm is similar to the corresponding AEAD
- * algorithm, but has an authentication tag that consists of fewer bytes.
- * Depending on the algorithm, the tag length may affect the calculation
- * of the ciphertext.
- *
- * \param aead_alg      An AEAD algorithm identifier (value of type
- *                      #psa_algorithm_t such that #PSA_ALG_IS_AEAD(\p alg)
- *                      is true).
- * \param tag_length    Desired length of the authentication tag in bytes.
- *
- * \return              The corresponding AEAD algorithm with the specified
- *                      length.
- * \return              Unspecified if \p alg is not a supported
- *                      AEAD algorithm or if \p tag_length is not valid
- *                      for the specified AEAD algorithm.
- */
-#define PSA_ALG_AEAD_WITH_TAG_LENGTH(aead_alg, tag_length)              \
-    (((aead_alg) & ~PSA_ALG_AEAD_TAG_LENGTH_MASK) |                     \
-     ((tag_length) << PSA_AEAD_TAG_LENGTH_OFFSET &                      \
-      PSA_ALG_AEAD_TAG_LENGTH_MASK))
 
 /** Macro to build a shortened AEAD algorithm.
  *
