@@ -4463,7 +4463,8 @@
             "TFM_V8M"
         ],
         "macros_add":[
-            "BL2"
+            "BL2",
+            "MCUBOOT_IMAGE_NUMBER=2"
         ],
         "tfm_target_name": "stm/nucleo_l552ze_q",
         "tfm_bootloader_supported": true,
