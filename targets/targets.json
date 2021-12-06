@@ -4481,12 +4481,11 @@
             "GNUARM"
         ],
         "tfm_default_toolchain":"GNUARM",
-        "tfm_delivery_dir":"TARGET_STM/TARGET_STM32L5/TARGET_STM32L552xE/TARGET_NUCLEO_L552ZE_Q/COMPONENT_TFM_S_FW",
-        "TFM_OUTPUT_EXT":"hex",
+        "tfm_delivery_dir":"TARGET_STM/TARGET_STM32L5/TARGET_STM32L552xE/TARGET_NUCLEO_L552ZE_Q/TFM_S_FW",
         "post_binary_hook":{
             "function":"STM32LZE_Q_S_Code.binary_hook"
         },
-        "secure_image_filename":"tfm_s.hex"
+        "secure_image_filename":"tfm_s.bin"
     },
     "MCU_STM32L562xE": {
         "inherits": [

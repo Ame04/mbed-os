@@ -34,7 +34,7 @@ MBED_OS_ROOT = abspath(path_join(SCRIPT_DIR, os.pardir, os.pardir,os.pardir,os.p
 
 def stm32l552ze_q_tfm_hex(t_self, non_secure_bin, secure_bin, target_name):
 
-    STM32L552ZE_Q_S_BASE = path_join(MBED_OS_ROOT, 'targets', 'TARGET_STM', 'TARGET_STM32L5', 'TARGET_STM32L552xE','TARGET_NUCLEO_L552ZE_Q', 'COMPONENT_TFM_S_FW')
+    STM32L552ZE_Q_S_BASE = path_join(MBED_OS_ROOT, 'targets', 'TARGET_STM', 'TARGET_STM32L5', 'TARGET_STM32L552xE','TARGET_NUCLEO_L552ZE_Q', 'TFM_S_FW')
     assert os.path.isfile(secure_bin)
     assert os.path.isfile(non_secure_bin)
 
