@@ -4454,7 +4454,7 @@
         "inherits": [
             "NUCLEO_L552ZE_Q"
         ],
-        "core": "Cortex-M33-NS",
+        "core": "Cortex-M33FE-NS",
         "features_add": [
             "PSA",
             "EXPERIMENTAL_API"
