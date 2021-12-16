@@ -22,13 +22,14 @@ import struct
 import shutil
 import inspect
 import sys
+import re
 
 from collections import namedtuple
 from copy import copy
 from future.utils import raise_from
 from os.path import dirname, abspath, join
 from tools.resources import FileType
-from tools.settings import ROOT
+from tools.settings import BUILD_DIR, ROOT
 from tools.targets.LPC import patch
 from tools.paths import TOOLS_BOOTLOADERS
 from tools.utils import json_file_to_dict, NotSupportedException
@@ -820,6 +821,11 @@ class STM32LZE_Q_S_Code(object):
             FileType.BIN
         )
         stm32l552ze_q_tfm_hex(t_self, path_bin, secure_bin, 'NUCLEO_L552ZE_Q_Secure')
+        
+        #copy of the regression script in the build dir
+        regression_path=secure_bin.replace("tfm_s.bin","regression.sh")
+        Build_Nucleo_DIR = re.sub("/[^/]*$","/regression.sh",path_bin)
+        shutil.copyfile(regression_path,Build_Nucleo_DIR)
 
 # End Target specific section
 ###############################################################################
