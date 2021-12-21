@@ -822,9 +822,19 @@ class STM32LZE_Q_S_Code(object):
         )
         stm32l552ze_q_tfm_hex(t_self, path_bin, secure_bin, 'NUCLEO_L552ZE_Q_Secure')
         
+        #copy of the BL2 bin in the temp build dir
+        bl2_path=secure_bin.replace("tfm_s.bin","bl2.bin")
+        Build_Nucleo_bin_DIR = re.sub("/[^/]*$","/temp/bl2.bin",path_bin)
+        shutil.copyfile(bl2_path,Build_Nucleo_bin_DIR)
+
         #copy of the regression script in the build dir
         regression_path=secure_bin.replace("tfm_s.bin","regression.sh")
         Build_Nucleo_DIR = re.sub("/[^/]*$","/regression.sh",path_bin)
+        shutil.copyfile(regression_path,Build_Nucleo_DIR)
+
+        #copy of the UPDATE script in the build dir
+        UPDATE_path=secure_bin.replace("tfm_s.bin","TFM_UPDATE.sh")
+        Build_Nucleo_DIR = re.sub("/[^/]*$","/TFM_UPDATE.sh",path_bin)
         shutil.copyfile(regression_path,Build_Nucleo_DIR)
 
 # End Target specific section
