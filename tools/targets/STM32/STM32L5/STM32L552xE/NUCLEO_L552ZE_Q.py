@@ -24,6 +24,7 @@ from os.path import join as path_join
 import re
 import subprocess
 import sys
+import shutil
 
 # Add PSA TF-M binary utility scripts in system path
 TFM_SCRIPTS = abspath(path_join(dirname(__file__), '..','..','..','..', 'psa', 'tfm', 'bin_utils'))
@@ -55,9 +56,12 @@ def stm32l552ze_q_tfm_hex(t_self, non_secure_bin, secure_bin, target_name):
     assert os.path.isfile(image_macros_s)
     assert os.path.isfile(image_macros_ns)
 
+    # Find Python 3 command name across platforms
+    python3_cmd = "python3" if shutil.which("python3") is not None else "python"
+
     #1. Run wrapper to sign the TF-M secure binary
     cmd = [
-        "python3",
+        python3_cmd,
         path_join(MBED_OS_ROOT, "tools", "psa","tfm", "bin_utils","wrapper.py"),
         "-v",
         '1.4.0',
@@ -90,10 +94,10 @@ def stm32l552ze_q_tfm_hex(t_self, non_secure_bin, secure_bin, target_name):
 
     #2. Run wrapper to sign the non-secure mbed binary
     cmd = [
-        "python3",
+        python3_cmd,
         path_join(MBED_OS_ROOT, "tools", "psa","tfm", "bin_utils","wrapper.py"),
         "-v",
-        '1.2.0',
+        '0.0.0',
         "-k",
         path_join(SCRIPT_DIR, 'root-rsa-3072_1.pem'),
         "--layout",
@@ -123,7 +127,7 @@ def stm32l552ze_q_tfm_hex(t_self, non_secure_bin, secure_bin, target_name):
 
     #3. Concatenate signed secure TFM and non-secure mbed binaries
     cmd = [
-        "python3",
+        python3_cmd,
         path_join(MBED_OS_ROOT, "tools", "psa","tfm", "bin_utils","assemble.py"),
         "--layout",
         image_macros_s,

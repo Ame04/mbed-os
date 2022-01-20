@@ -1,4 +1,4 @@
-# Musca-S1 RSA keypair
+# NUCLEO_L552ZE_Q RSA keypair
 
 A default RSA key pair is given to the Nucleo_l552ze_q target.
 

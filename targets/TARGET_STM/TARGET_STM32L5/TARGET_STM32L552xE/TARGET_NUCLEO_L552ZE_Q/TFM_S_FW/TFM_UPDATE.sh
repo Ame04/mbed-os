@@ -44,7 +44,7 @@ unused=0xc0d7000
 $stm32programmercli $connect -d $BINPATH/tfm_s_signed.bin $slot0 -v
 echo "TFM_Appli Secure Written"
 echo "Write TFM_Appli NonSecure"
-$stm32programmercli $connect -d $BINPATH/tfm_ns_signed.bin $slot1 -v
+$stm32programmercli $connect -d $BINPATH/tfm_mbed-os-tf-m-regression-tests_signed.bin $slot1 -v
 echo "TFM_Appli NonSecure Written"
 echo "Write TFM_SBSFU_Boot"
 $stm32programmercli $connect -d $BINPATH/bl2.bin $boot -v
