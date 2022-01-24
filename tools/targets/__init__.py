@@ -824,18 +824,18 @@ class STM32LZE_Q_S_Code(object):
         
         #copy of the BL2 bin in the temp build dir
         bl2_path=secure_bin.replace("tfm_s.bin","bl2.bin")
-        Build_Nucleo_bin_DIR = re.sub(r"/[^/]*$","/temp/bl2.bin",path_bin)
-        shutil.copyfile(bl2_path,Build_Nucleo_bin_DIR)
+        path_to_copy_BL2_bin = os.path.join(dirname(path_bin), "temp", "bl2.bin")
+        shutil.copyfile(bl2_path,path_to_copy_BL2_bin)
 
         #copy of the regression script in the build dir
         regression_path=secure_bin.replace("tfm_s.bin","regression.sh")
-        Build_Nucleo_DIR = re.sub(r"/[^/]*$","/regression.sh",path_bin)
-        shutil.copyfile(regression_path,Build_Nucleo_DIR)
+        path_to_copy_regression = os.path.join(dirname(path_bin), "regression.sh")
+        shutil.copyfile(regression_path,path_to_copy_regression)
 
         #copy of the UPDATE script in the build dir
         UPDATE_path=secure_bin.replace("tfm_s.bin","TFM_UPDATE.sh")
-        Build_Nucleo_DIR = re.sub(r"/[^/]*$","/TFM_UPDATE.sh",path_bin)
-        shutil.copyfile(UPDATE_path,Build_Nucleo_DIR)
+        path_to_copy_UPDATE = os.path.join(dirname(path_bin), "TFM_UPDATE.sh")
+        shutil.copyfile(UPDATE_path,path_to_copy_UPDATE)
 
 # End Target specific section
 ###############################################################################
