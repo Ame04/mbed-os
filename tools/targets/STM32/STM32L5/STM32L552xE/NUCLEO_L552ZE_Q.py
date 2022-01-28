@@ -40,7 +40,7 @@ def stm32l552ze_q_tfm_hex(t_self, non_secure_bin, secure_bin, target_name):
     assert os.path.isfile(non_secure_bin)
 
     build_dir = dirname(non_secure_bin)
-    tempdir = path_join(build_dir, 'temp')
+    tempdir = path_join(build_dir, 'bin')
     if not isdir(tempdir):
         os.makedirs(tempdir)
     flash_layout = path_join(STM32L552ZE_Q_S_BASE, 'partition', 'flash_layout.h')
@@ -89,7 +89,7 @@ def stm32l552ze_q_tfm_hex(t_self, non_secure_bin, secure_bin, target_name):
     retcode = run_cmd(cmd, MBED_OS_ROOT)
     if retcode:
         raise Exception("Unable to sign " + target_name +
-                            " secure binary, Error code: " + retcode)
+                            " secure binary, Error code: " + str(retcode))
         return
 
     #2. Run wrapper to sign the non-secure mbed binary
@@ -122,7 +122,7 @@ def stm32l552ze_q_tfm_hex(t_self, non_secure_bin, secure_bin, target_name):
     retcode = run_cmd(cmd, MBED_OS_ROOT)
     if retcode:
         raise Exception("Unable to sign " + target_name +
-                            " non-secure binary, Error code: " + retcode)
+                            " non-secure binary, Error code: " + str(retcode))
         return
 
     #3. Concatenate signed secure TFM and non-secure mbed binaries
@@ -142,7 +142,7 @@ def stm32l552ze_q_tfm_hex(t_self, non_secure_bin, secure_bin, target_name):
     retcode = run_cmd(cmd, MBED_OS_ROOT)
     if retcode:
         raise Exception("Unable to concatenate " + target_name +
-                            " binaries, Error code: " + retcode)
+                            " binaries, Error code: " + str(retcode))
         return
 
     #4. Concatenate mcuboot and signed binary and overwrite mbed built binary file

@@ -29,8 +29,6 @@ MEMORY
 }
 
 __heap_size__  = NS_HEAP_SIZE;
-__psp_stack_size__ = NS_PSP_STACK_SIZE;
-__msp_stack_size__ = NS_MSP_STACK_SIZE;
 
 /* Library configurations */
 GROUP(libgcc.a libc.a libm.a libnosys.a)

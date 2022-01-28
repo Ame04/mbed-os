@@ -51,6 +51,10 @@ uint8_t SetSysClock_PLL_HSI(void);
 uint8_t SetSysClock_PLL_MSI(void);
 #endif /* ((CLOCK_SOURCE) & USE_PLL_MSI) */
 
+void hal_deepsleep(void)
+{
+    hal_sleep();
+}
 
 /**
   * @brief  Configures the System clock source, PLL Multiplier and Divider factors,
@@ -159,7 +163,7 @@ uint8_t SetSysClock_PLL_MSI(void)
     RCC_OscInitStruct.PLL.PLLSource       = RCC_PLLSOURCE_MSI;
     RCC_OscInitStruct.PLL.PLLM            = 1;              /* 4 MHz */
     RCC_OscInitStruct.PLL.PLLN            = 55;             /* 220 MHz */
-    RCC_OscInitStruct.PLL.PLLP            = RCC_PLLP_DIV7;
+    RCC_OscInitStruct.PLL.PLLP            = RCC_PLLP_DIV2;
     RCC_OscInitStruct.PLL.PLLQ            = RCC_PLLQ_DIV2;  /* 110 MHz */
     RCC_OscInitStruct.PLL.PLLR            = RCC_PLLR_DIV2;  /* 110 MHz */
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {

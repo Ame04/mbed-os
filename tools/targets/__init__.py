@@ -824,7 +824,7 @@ class STM32LZE_Q_S_Code(object):
         
         #copy of the BL2 bin in the temp build dir
         bl2_path=secure_bin.replace("tfm_s.bin","bl2.bin")
-        path_to_copy_BL2_bin = os.path.join(dirname(path_bin), "temp", "bl2.bin")
+        path_to_copy_BL2_bin = os.path.join(dirname(path_bin), "bin", "bl2.bin")
         shutil.copyfile(bl2_path,path_to_copy_BL2_bin)
 
         #copy of the regression script in the build dir
