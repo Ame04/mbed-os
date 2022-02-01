@@ -25,6 +25,13 @@ extern void SetSysClock(void);
 #   define LSE_CONFIG_AVAILABLE
 #endif
 
+#if TARGET_TFM
+void hal_deepsleep(void)
+{
+    hal_sleep() ;
+}
+#endif
+
 // set defaults for LSE drive load level
 #if defined(LSE_CONFIG_AVAILABLE)
 
@@ -239,7 +246,7 @@ void mbed_sdk_init()
 
 #if defined(MBED_CONF_TARGET_SYSTEM_POWER_SUPPLY)
 #if IS_PWR_SUPPLY(MBED_CONF_TARGET_SYSTEM_POWER_SUPPLY)
-    HAL_PWREx_ConfigSupply(MBED_CONF_TARGET_SYSTEM_POWER_SUPPLY);
+//    HAL_PWREx_ConfigSupply(MBED_CONF_TARGET_SYSTEM_POWER_SUPPLY);
 #else
 #error system_power_supply not configured
 #endif
